@@ -5,15 +5,21 @@ import logo from '../../assets/images/logo.png';
 import {useFonts} from 'expo-font';
 import {useDispatch} from "react-redux";
 import {RouteActions, Screens} from "../../routes/RouteSlice";
+import {NativeStackScreenProps} from "@react-navigation/native-stack";
+import {RootStackParamList} from "../../../App";
 
+type Props = NativeStackScreenProps<RootStackParamList, Screens.SplashScreen>;
 
-export const SplashScreen: React.FC = (props) => {
+export const SplashScreen = ({navigation}: Props) => {
     let [fontsLoaded] = useFonts({
         'regular': require('../../assets/fonts/Estedad-FD-Regular.ttf'),
     });
     const dispatch = useDispatch()
     useEffect(() => {
-        setTimeout(() => dispatch(RouteActions.setActiveScreen(Screens.WelComeScreen)), 300)
+        setTimeout(() => {
+            dispatch(RouteActions.setActiveScreen(Screens.WelcomeScreen))
+            navigation.navigate(Screens.WelcomeScreen)
+        }, 3000)
     }, [])
 
     if (!fontsLoaded) {

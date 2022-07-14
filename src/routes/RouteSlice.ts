@@ -1,8 +1,10 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 export enum Screens {
-    SplashScreen,
-    WelComeScreen
+    SplashScreen = "SplashScreen",
+    WelcomeScreen = "WelcomeScreen",
+    LoginPage = "LoginPage",
+    HomePage = "HomePage",
 }
 
 interface RouteState {
@@ -24,4 +26,4 @@ const routeSlice = createSlice({
 })
 
 export const RouteActions = routeSlice.actions
-export const routeReducer =  routeSlice.reducer
+export const routeReducer = routeSlice.reducer
