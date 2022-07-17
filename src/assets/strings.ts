@@ -6,5 +6,11 @@ export const strings = {
     login: "وارد شو",
     phoneNumber: "تلفن همراه:",
     enterCode: "کد پیامکی را وارد کنید:",
-
+    homepage:{
+        new_items:"تازه ها",
+        sleep:"خواب",
+        breath:"تنفس",
+        course:"دوره",
+        podcasts:"پادکست",
+    }
 }

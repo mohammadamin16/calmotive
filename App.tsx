@@ -29,7 +29,7 @@ const RouterContainer = () => {
 
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName={Screens.LoginPage} screenOptions={{headerShown: false}}>
+            <Stack.Navigator initialRouteName={Screens.HomePage} screenOptions={{headerShown: false}}>
                 <Stack.Screen name={Screens.SplashScreen} component={SplashScreen}/>
                 <Stack.Screen name={Screens.WelcomeScreen} component={WelcomePage}/>
                 <Stack.Screen name={Screens.LoginPage} component={LoginPage}/>
