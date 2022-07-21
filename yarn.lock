@@ -3096,6 +3096,13 @@ expo-asset@~8.5.0:
     path-browserify "^1.0.0"
     url-parse "^1.5.9"
 
+expo-av@~11.2.3:
+  version "11.2.3"
+  resolved "https://registry.yarnpkg.com/expo-av/-/expo-av-11.2.3.tgz#254242dae76e3cd60ef9d9c33618e4a12d37aa33"
+  integrity sha512-ptTe96s33Ct0eOsOmNTvtaWFx4B0SDkQmDfPbiuX/C2afqbLQf8geEopw7BRO8ZZl7Qe3qBMH6YLHXKTkZkTyQ==
+  dependencies:
+    "@expo/config-plugins" "^4.0.14"
+
 expo-constants@~13.1.1:
   version "13.1.1"
   resolved "https://registry.npmjs.org/expo-constants/-/expo-constants-13.1.1.tgz"
@@ -5569,6 +5576,21 @@ react-native-screens@~3.11.1:
   dependencies:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
+
+react-native-sound-player@^0.13.0:
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/react-native-sound-player/-/react-native-sound-player-0.13.0.tgz#babe0a4189e68d14f05de3aeb54d4d1277a92a47"
+  integrity sha512-wMc04tMvJur0RJAk/SgmUYyNSe+f1EWf2ogN7U2wUzvOUwODNqePgv3XFNxmh8vzcyAR+UvQSUanvTVDeFywSg==
+
+react-native-sound@^0.11.2:
+  version "0.11.2"
+  resolved "https://registry.yarnpkg.com/react-native-sound/-/react-native-sound-0.11.2.tgz#e542dc5b9e16ab4b3ac7e6eaddb1fc8d98da9038"
+  integrity sha512-LmGc8lgOK3qecYMVQpyHvww/C+wgT6sWeMpVbOe4NCRGC2yKd4fo4U0KBUo9PO7AqKESO3I/2GZg1/C0+bwiiA==
+
+react-native-track-player@^2.2.0-rc4:
+  version "2.2.0-rc4"
+  resolved "https://registry.yarnpkg.com/react-native-track-player/-/react-native-track-player-2.2.0-rc4.tgz#bd96c15e411578b3d69e96304ad04cdf175b1661"
+  integrity sha512-ojEEZbAv3P9RhTxkeQMrh3kpOp/bqV/F7VwKezSyMxtdZXZiyIXn0D3eMbrRLiamwVjDuMKYy1S9DxoCOL8eUQ==
 
 react-native-web@0.17.7:
   version "0.17.7"
