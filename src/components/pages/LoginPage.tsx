@@ -14,7 +14,7 @@ type Props = NativeStackScreenProps<RootStackParamList, Screens.LoginPage>;
 
 export const LoginPage: React.FC<Props> = ({navigation}) => {
     const theme = useTheme()
-    const [phone, setPhone] = useState<string>("09123456789");
+    const [phone, setPhone] = useState<string>("");
     const [code, setCode] = useState<string>("");
     const [codeStep, setCodeStep] = useState<boolean>();
     const isButtonActive = useMemo(() => {

@@ -1,5 +1,5 @@
 import React from "react"
-import {Text} from "react-native";
+import {StyleProp, Text, TextStyle} from "react-native";
 import {useFonts} from "expo-font";
 
 
@@ -41,14 +41,22 @@ interface BodyProps {
     weight: BodyWeight,
     size: BodySizes,
     color?: string,
-    style?: any
+    style?: StyleProp<TextStyle>
 }
 
-export const Body: React.FC<BodyProps> = ({size, weight, color = 'black', style, children}) => {
+export const Body: React.FC<BodyProps> = ({
+                                              size,
+                                              weight,
+                                              color = 'black',
+                                              style,
+                                              children
+                                          }) => {
     let [fontsLoaded] = useFonts(Fonts);
     if (!fontsLoaded) return <Text>Loading...</Text>
-    else return fontsLoaded &&
-		<Text style={{fontFamily: weight, color: color, fontSize: size, ...style}}>{children}</Text>
+    else {
+        return fontsLoaded &&
+			<Text style={[{fontFamily: weight, color: color, fontSize: size}, style]}> {children}</Text>
+    }
 }
 
 

@@ -10,6 +10,7 @@ import React, {useEffect} from "react";
 import {LoginPage} from "./src/components/pages/LoginPage";
 import {HomePage} from "./src/components/pages/HomePage";
 import {PlayerPage} from "./src/components/pages/PlayerPage";
+import {CourseDetailPage} from "./src/components/pages/CourseDetailPage";
 
 const Stack = createNativeStackNavigator<ParamListBase>();
 
@@ -22,20 +23,16 @@ export type RootStackParamList = {
 };
 
 const RouterContainer = () => {
-    // const activePage = useSelector((state: RootState) => state.route.screen)
-    // const navigation = useNavigation()
-    // useEffect(() => {
-    //     navigation && navigation.navigate("")
-    // }, [activePage])
 
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName={Screens.PlayerPage} screenOptions={{headerShown: false}}>
+            <Stack.Navigator initialRouteName={Screens.CourseDetailPage} screenOptions={{headerShown: false}}>
                 <Stack.Screen name={Screens.SplashScreen} component={SplashScreen}/>
                 <Stack.Screen name={Screens.WelcomeScreen} component={WelcomePage}/>
                 <Stack.Screen name={Screens.LoginPage} component={LoginPage}/>
                 <Stack.Screen name={Screens.HomePage} component={HomePage}/>
                 <Stack.Screen name={Screens.PlayerPage} component={PlayerPage}/>
+                <Stack.Screen name={Screens.CourseDetailPage} component={CourseDetailPage}/>
             </Stack.Navigator>
         </NavigationContainer>
     )

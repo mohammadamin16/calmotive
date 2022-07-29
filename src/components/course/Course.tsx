@@ -1,26 +1,38 @@
 import React from "react";
-import {Image, View} from "react-native";
+import {Image, TouchableOpacity, View} from "react-native";
 import {Body, BodySizes, BodyWeight} from "../../UI/texts";
 import {useTheme} from "../../UI/theme";
 import cover from '../../assets/images/course_covers/cover1.png';
 import play_icon from '../../assets/images/icons/play.png';
+import {Screens} from "../../routes/RouteSlice";
+import {useNavigation} from "@react-navigation/native";
 
 
 interface MenuItemProps {
+    full_width?: boolean;
 }
 
-export const Course: React.FC<MenuItemProps> = () => {
+export const Course: React.FC<MenuItemProps> = (props) => {
     const theme = useTheme()
+    const navigation = useNavigation()
+
     return (
-        <View style={{
-            backgroundColor: theme.main.color_3,
-            borderRadius: 25,
-            width: '80%',
-            height: 200,
-            flexDirection: 'row',
-            overflow: 'hidden',
-            marginBottom:20,
-        }}>
+        <TouchableOpacity
+            style={{
+                backgroundColor: theme.main.color_3,
+                borderRadius: 25,
+                borderTopRightRadius: props.full_width ? 0 : 25,
+                borderTopLeftRadius: props.full_width ? 0 : 25,
+                width: props.full_width ? "100%" : '80%',
+                height: 200,
+                flexDirection: 'row',
+                overflow: 'hidden',
+                marginBottom: 20,
+            }}
+            onPress={() => {
+                navigation.navigate(Screens.PlayerPage)
+            }}
+        >
             <View style={{
                 flexDirection: 'column',
                 width: '40%',
@@ -40,22 +52,25 @@ export const Course: React.FC<MenuItemProps> = () => {
                     {"شروع مدیتیشن"}
                 </Body>
 
-                <Body weight={BodyWeight.Regular} size={BodySizes.Medium} color={theme.alternative.white}>
+                <Body weight={BodyWeight.Regular}
+                      size={BodySizes.Medium} color={theme.alternative.white}>
                     {"این دوره به شما کمک میکند تا با اصول اولیه مدیتیشن آشنا شوید."}
                 </Body>
                 <View style={{
                     flexDirection: "row",
-                    marginVertical:10,
-                    width:'80%',
-                    justifyContent:'space-between'
+                    marginVertical: 10,
+                    width: '80%',
+                    justifyContent: 'space-between'
                 }}>
                     <Body weight={BodyWeight.SemiBold} size={BodySizes.Medium} color={theme.main.color_4}>
                         {"12 قسمت"}
                     </Body>
-                    <Image source={play_icon} style={{width: 30,height:30,
-                        resizeMode: 'contain'}}/>
+                    <Image source={play_icon} style={{
+                        width: 30, height: 30,
+                        resizeMode: 'contain'
+                    }}/>
                 </View>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
