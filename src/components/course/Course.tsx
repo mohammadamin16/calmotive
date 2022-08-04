@@ -30,7 +30,7 @@ export const Course: React.FC<MenuItemProps> = (props) => {
                 marginBottom: 20,
             }}
             onPress={() => {
-                navigation.navigate(Screens.PlayerPage)
+                navigation.navigate(Screens.CourseDetailPage)
             }}
         >
             <View style={{

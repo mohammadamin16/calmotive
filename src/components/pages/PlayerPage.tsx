@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Image, SafeAreaView, StatusBar, StyleSheet, TouchableOpacity, View} from "react-native";
+import {Image, ImageBackground, StatusBar, StyleSheet, TouchableOpacity, View} from "react-native";
 import {Body, BodySizes, BodyWeight} from "../../UI/texts";
 import {useTheme} from "../../UI/theme";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
@@ -12,6 +12,8 @@ import play_icon from "../../assets/images/icons/play.png";
 import pause_icon from "../../assets/images/icons/pause.png";
 import backward_icon from "../../assets/images/icons/backward.png";
 import forward_icon from "../../assets/images/icons/forward.png";
+import bg_image from "../../assets/images/course_covers/cover1.png";
+import {BackButton, BackButtonRotation} from "../course/BackButton";
 
 type Props = NativeStackScreenProps<RootStackParamList, Screens.LoginPage>;
 
@@ -61,6 +63,7 @@ export const PlayerPage: React.FC<Props> = ({navigation}) => {
         page_container: {
             flex: 1,
             flexDirection: "column",
+            position: 'relative',
             backgroundColor: theme.main.color_1,
             alignItems: 'center',
             justifyContent: 'center',
@@ -79,18 +82,39 @@ export const PlayerPage: React.FC<Props> = ({navigation}) => {
         }
     }
     return (
-        <SafeAreaView style={styles.page_container}>
+        <ImageBackground
+            source={bg_image}
+            blurRadius={20}
+            style={styles.page_container}>
             <StatusBar
                 animated={true}
-                backgroundColor={theme.main.color_4}
+                backgroundColor={theme.main.color_1}
                 hidden={false}/>
+            <View style={{
+                backgroundColor: theme.main.color_1, opacity: 0.5, position: "absolute",
+                width: "100%", height: "100%"
+            }}/>
 
+            <BackButton backScreen={Screens.CourseDetailPage} rotation={BackButtonRotation.up}/>
+            <View style={{
+                flexDirection: "column",
+                alignItems: "center",
+                marginBottom: 30,
+            }}>
+                <Body weight={BodyWeight.Bold} size={BodySizes.Large}>
+                    {"به کالموتیو خوش آمدید."}
+                </Body>
+
+                <Body weight={BodyWeight.Regular} size={BodySizes.Medium}>
+                    {"محمود دولت آبادی"}
+                </Body>
+
+            </View>
             <View style={{
                 flexDirection: "row",
-                width:'75%',
-                justifyContent:'space-between'
+                width: '75%',
+                justifyContent: 'space-between',
             }}>
-
                 <TouchableOpacity onPress={() => sound1.setPositionAsync(position - 5000)}>
                     <Image style={{width: 50, height: 50, resizeMode: 'contain'}}
                            source={forward_icon}/>
@@ -110,11 +134,10 @@ export const PlayerPage: React.FC<Props> = ({navigation}) => {
             <View style={{position: "absolute", bottom: 100}}>
 
                 <Body weight={BodyWeight.Bold} size={BodySizes.Medium}>
-                    {Math.floor(position / 1000) | 0}
+                    {new Date(position | 0).toISOString().substring(14, 19)}
                 </Body>
             </View>
-
-        </SafeAreaView>
+        </ImageBackground>
     )
 }
 

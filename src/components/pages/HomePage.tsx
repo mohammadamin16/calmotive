@@ -15,9 +15,14 @@ import wind_icon from '../../assets/images/icons/wind.png';
 import home_icon from '../../assets/images/icons/home.png';
 import music_icon from '../../assets/images/icons/music.png';
 import search_icon from '../../assets/images/icons/search.png';
+import active_search_icon from '../../assets/images/icons/active_search.png';
+import active_home_icon from '../../assets/images/icons/active_home.png';
+import active_profile_icon from '../../assets/images/icons/active_profile.png';
+import active_music_icon from '../../assets/images/icons/active_music.png';
 import user_icon from '../../assets/images/icons/user.png';
 import {strings} from "../../assets/strings";
 import {Course} from "../course/Course";
+import {MainMenu} from "../course/MainMenu";
 
 type Props = NativeStackScreenProps<RootStackParamList, Screens.LoginPage>;
 
@@ -43,18 +48,6 @@ export const CategoryIcon: React.FC<CategoryIconProps> = ({icon, title}) => {
     )
 }
 
-interface MenuItemProps {
-    icon: any,
-}
-
-export const MenuItem: React.FC<MenuItemProps> = ({icon}) => {
-    const theme = useTheme()
-    return (
-        <TouchableOpacity style={{width: 30, height: 30}}>
-            <Image source={icon} style={{width: 30, height: 30}}/>
-        </TouchableOpacity>
-    )
-}
 
 export const HomePage: React.FC<Props> = (props) => {
     const theme = useTheme()
@@ -102,25 +95,6 @@ export const HomePage: React.FC<Props> = (props) => {
                 <CategoryIcon icon={wind_icon} title={strings.homepage.breath}/>
                 <CategoryIcon icon={moon_icon} title={strings.homepage.sleep}/>
                 <CategoryIcon icon={flame_icon} title={strings.homepage.new_items}/>
-            </View>
-
-            <View style={{
-                position: 'absolute',
-                bottom: 20,
-                backgroundColor: "#FFE3D8",
-                width: '90%',
-                borderRadius: 25,
-                paddingVertical: 20,
-                paddingHorizontal: 50,
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                zIndex: 10,
-            }}>
-
-                <MenuItem icon={home_icon}/>
-                <MenuItem icon={music_icon}/>
-                <MenuItem icon={user_icon}/>
-                <MenuItem icon={search_icon}/>
             </View>
             <ScrollView style={{
                 marginTop: 20,

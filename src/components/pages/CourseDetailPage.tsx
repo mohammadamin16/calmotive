@@ -1,16 +1,13 @@
-import React, {useMemo, useState} from "react";
-import {Image, SafeAreaView, ScrollView, StatusBar, StyleSheet, TextInput, TouchableOpacity, View} from "react-native";
-import {Body, BodySizes, BodyWeight} from "../../UI/texts";
+import React from "react";
+import {SafeAreaView, ScrollView, StatusBar, StyleSheet} from "react-native";
 import {useTheme} from "../../UI/theme";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import {RootStackParamList} from "../../../App";
-import {RouteActions, Screens} from "../../routes/RouteSlice";
-import {strings} from "../../assets/strings";
-import ArrowIcon from "../../assets/images/arrow.png";
+import {Screens} from "../../routes/RouteSlice";
 import {useDispatch} from "react-redux";
-import {useNavigation} from "@react-navigation/native";
 import {Course} from "../course/Course";
 import {Episode} from "../course/Episode";
+import {BackButton, BackButtonPlacement, BackButtonRotation} from "../course/BackButton";
 
 type Props = NativeStackScreenProps<RootStackParamList, Screens.LoginPage>;
 
@@ -34,7 +31,11 @@ export const CourseDetailPage: React.FC<Props> = ({navigation}) => {
                 animated={true}
                 backgroundColor={theme.main.color_3}
                 hidden={false}/>
-
+            <BackButton
+                backScreen={Screens.HomePage}
+                rotation={BackButtonRotation.left}
+                placement={BackButtonPlacement.left}
+            />
             <Course full_width={true}/>
             <ScrollView style={{
                 marginTop: 0,
@@ -44,23 +45,23 @@ export const CourseDetailPage: React.FC<Props> = ({navigation}) => {
             }}
                         contentContainerStyle={{
                             alignItems: 'center',
-                            width:'90%',
-                            marginHorizontal:'5%',
-                            justifyContent:'center',
+                            width: '90%',
+                            marginHorizontal: '5%',
+                            justifyContent: 'center',
                         }}
             >
-                    <Episode/>
-                    <Episode/>
-                    <Episode/>
-                    <Episode/>
-                    <Episode/>
-                    <Episode/>
-                    <Episode/>
-                    <Episode/>
-                    <Episode/>
-                    <Episode/>
-                    <Episode/>
-                    <Episode/>
+                <Episode/>
+                <Episode/>
+                <Episode/>
+                <Episode/>
+                <Episode/>
+                <Episode/>
+                <Episode/>
+                <Episode/>
+                <Episode/>
+                <Episode/>
+                <Episode/>
+                <Episode/>
             </ScrollView>
         </SafeAreaView>
     )
