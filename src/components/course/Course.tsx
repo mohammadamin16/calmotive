@@ -4,8 +4,9 @@ import {Body, BodySizes, BodyWeight} from "../../UI/texts";
 import {useTheme} from "../../UI/theme";
 import cover from '../../assets/images/course_covers/cover1.png';
 import play_icon from '../../assets/images/icons/play.png';
-import {Screens} from "../../routes/RouteSlice";
+import {RouteActions, Screens} from "../../routes/RouteSlice";
 import {useNavigation} from "@react-navigation/native";
+import {useDispatch} from "react-redux";
 
 
 interface MenuItemProps {
@@ -15,6 +16,7 @@ interface MenuItemProps {
 export const Course: React.FC<MenuItemProps> = (props) => {
     const theme = useTheme()
     const navigation = useNavigation()
+    const dispatch = useDispatch()
 
     return (
         <TouchableOpacity
@@ -30,6 +32,7 @@ export const Course: React.FC<MenuItemProps> = (props) => {
                 marginBottom: 20,
             }}
             onPress={() => {
+                dispatch(RouteActions.setActiveScreen(Screens.CourseDetailPage))
                 navigation.navigate(Screens.CourseDetailPage)
             }}
         >

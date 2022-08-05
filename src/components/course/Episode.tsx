@@ -3,7 +3,8 @@ import {TouchableOpacity, View} from "react-native";
 import {Body, BodySizes, BodyWeight} from "../../UI/texts";
 import {useTheme} from "../../UI/theme";
 import {useNavigation} from "@react-navigation/native";
-import {Screens} from "../../routes/RouteSlice";
+import {RouteActions, Screens} from "../../routes/RouteSlice";
+import {useDispatch} from "react-redux";
 
 
 interface MenuItemProps {
@@ -13,6 +14,8 @@ interface MenuItemProps {
 export const Episode: React.FC<MenuItemProps> = (props) => {
     const theme = useTheme()
     const navigation = useNavigation()
+    const dispatch = useDispatch()
+
     return (
         <TouchableOpacity
             style={{
@@ -22,6 +25,7 @@ export const Episode: React.FC<MenuItemProps> = (props) => {
                 alignItems: "center"
             }}
             onPress={() => {
+                dispatch(RouteActions.setActiveScreen(Screens.PlayerPage))
                 navigation.navigate(Screens.PlayerPage)
             }}
         >

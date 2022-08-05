@@ -1,5 +1,5 @@
 import React from "react";
-import {Image, StyleSheet, TouchableOpacity, View} from "react-native";
+import {Image, TouchableOpacity, View} from "react-native";
 import {useTheme} from "../../UI/theme";
 import {RouteActions, Screens} from "../../routes/RouteSlice";
 import {useDispatch, useSelector} from "react-redux";
@@ -13,7 +13,6 @@ import active_profile_icon from "../../assets/images/icons/active_profile.png";
 import search_icon from "../../assets/images/icons/search.png";
 import active_search_icon from "../../assets/images/icons/active_search.png";
 import {RootState} from "../../../rootReducer";
-import {setActive} from "react-native-sound";
 
 interface MenuItemProps {
     icon: any,
@@ -42,11 +41,17 @@ export const MainMenu: React.FC = (props) => {
     const activePage = useSelector((state: RootState) => state.route.screen)
     const dispatch = useDispatch()
     const navigation = useNavigation()
-
+    console.log("active:", activePage)
 
     return (
         <View
-            style={{width: "100%",
+            style={{
+                display:
+                    activePage === Screens.HomePage ||
+                    activePage === Screens.MusicPage ||
+                    activePage === Screens.SearchPage ||
+                    activePage === Screens.ProfilePage ? "flex" : "none",
+                width: "100%",
                 flexDirection: "row",
                 justifyContent: "center",
                 position: 'absolute',

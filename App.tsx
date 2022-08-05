@@ -1,12 +1,11 @@
 import {SplashScreen} from "./src/components/pages/SplashScreen";
-import {NavigationContainer, NavigationContext, ParamListBase, useNavigation} from '@react-navigation/native';
+import {NavigationContainer, ParamListBase} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {rootStore} from "./rootStore"
-import {Provider, useSelector} from 'react-redux';
-import {RootState} from "./rootReducer";
+import {Provider, useDispatch} from 'react-redux';
 import {WelcomePage} from "./src/components/pages/WelcomePage";
-import {Screens} from "./src/routes/RouteSlice";
-import React, {useEffect} from "react";
+import {RouteActions, Screens} from "./src/routes/RouteSlice";
+import React from "react";
 import {LoginPage} from "./src/components/pages/LoginPage";
 import {HomePage} from "./src/components/pages/HomePage";
 import {PlayerPage} from "./src/components/pages/PlayerPage";
@@ -27,10 +26,11 @@ export type RootStackParamList = {
 };
 
 const RouterContainer = () => {
-
+    const dispatch = useDispatch();
+    dispatch(RouteActions.setActiveScreen(Screens.HomePage))
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName={Screens.CourseDetailPage} screenOptions={{headerShown: false}}>
+            <Stack.Navigator initialRouteName={Screens.HomePage} screenOptions={{headerShown: false}}>
                 <Stack.Screen name={Screens.SplashScreen} component={SplashScreen}/>
                 <Stack.Screen name={Screens.WelcomeScreen} component={WelcomePage}/>
                 <Stack.Screen name={Screens.LoginPage} component={LoginPage}/>

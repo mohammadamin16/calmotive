@@ -1,10 +1,10 @@
 import React from "react";
-import {Image, TouchableOpacity, View} from "react-native";
-import {Body, BodySizes, BodyWeight} from "../../UI/texts";
+import {Image, TouchableOpacity} from "react-native";
 import {useTheme} from "../../UI/theme";
 import {useNavigation} from "@react-navigation/native";
-import {Screens} from "../../routes/RouteSlice";
+import {RouteActions, Screens} from "../../routes/RouteSlice";
 import simple_icon from "../../assets/images/icons/simple_arrow.png";
+import {useDispatch} from "react-redux";
 
 export enum BackButtonPlacement {
     left,
@@ -30,10 +30,14 @@ export const BackButton: React.FC<Props> = ({
                                                 rotation = BackButtonRotation.down
                                             }) => {
     const theme = useTheme()
+    const dispatch = useDispatch()
     const navigation = useNavigation()
     return (
         <TouchableOpacity
-            onPress={() => navigation.navigate(backScreen)}
+            onPress={() => {
+                dispatch(RouteActions.setActiveScreen(backScreen))
+                navigation.navigate(backScreen)
+            }}
             style={{
                 position: 'absolute',
                 top: 0,
