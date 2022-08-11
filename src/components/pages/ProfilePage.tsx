@@ -20,6 +20,10 @@ import {Icon} from "../Icon";
 import settings_icon from "../../assets/images/icons/settings.png"
 import like_icon from "../../assets/images/icons/like.png"
 import sample_avatar from "../../assets/images/sample_avatar.png"
+import headphone_icon from "../../assets/images/icons/headphones.png"
+import books_icon from "../../assets/images/icons/books.png"
+import {strings} from "../../assets/strings";
+import {BackButton, BackButtonPlacement, BackButtonRotation} from "../BackButton";
 
 type Props = NativeStackScreenProps<RootStackParamList, Screens.LoginPage>;
 
@@ -88,7 +92,6 @@ export const ActivityBadge: React.FC<{ image: ImageSourcePropType, text: string 
                     width: 30,
                     maxHeight: 30,
                     resizeMode: "contain",
-                    borderRadius: 10000,
                 }}
                 source={props.image}
             />
@@ -110,6 +113,19 @@ export const ProfilePage: React.FC<Props> = (props) => {
             flexDirection: "column",
             backgroundColor: theme.main.color_1,
             alignItems: 'center',
+            paddingTop:50
+        },
+        header: {
+            position: "absolute",
+            top: 0,
+            alignItems: "center",
+            justifyContent: "center",
+            width: "100%",
+            // height: 40,
+            paddingBottom: 10,
+            backgroundColor: theme.main.color_4,
+            borderBottomLeftRadius: 25,
+            borderBottomRightRadius: 25,
         },
 
 
@@ -123,6 +139,17 @@ export const ProfilePage: React.FC<Props> = (props) => {
             <StatusBar
                 animated={true}
                 backgroundColor={theme.main.color_4}/>
+            <View style={styles.header}>
+                <Body weight={BodyWeight.Bold} size={BodySizes.Medium}>
+                    {strings.calmotive}
+
+                </Body>
+                <BackButton
+                    backScreen={Screens.HomePage}
+                    placement={BackButtonPlacement.left}
+                    rotation={BackButtonRotation.left}
+                />
+            </View>
             <View style={{
                 flexDirection: "row",
                 width: "90%",
@@ -147,7 +174,7 @@ export const ProfilePage: React.FC<Props> = (props) => {
                 <CustomButton
                     textColor={theme.alternative.white}
                     text={"تمدید اشتراک"}
-                    // onPress={() => alert()}
+                    onPress={() => navigation.navigate(Screens.ChoosePlanPage)}
                 />
 
                 <CustomButton
@@ -187,15 +214,15 @@ export const ProfilePage: React.FC<Props> = (props) => {
                 flexWrap: "wrap",
                 flexDirection: "row",
             }}>
-                <ActivityBadge image={settings_icon} text={"25 ساعت "}/>
-                <ActivityBadge image={settings_icon} text={"35 قسمت"}/>
+                <ActivityBadge image={headphone_icon} text={"25 ساعت "}/>
+                <ActivityBadge image={books_icon} text={"35 قسمت"}/>
                 <ActivityBadge image={settings_icon} text={"225 روز"}/>
                 <ActivityBadge image={settings_icon} text={"12 دوره"}/>
             </View>
 
             <CustomButton
                 style={{marginTop: 30}}
-                text={"خروج از حساب کاربری"} color={"red"}/>
+                text={"خروج از حساب کاربری"} color={"#EB5757"}/>
 
         </SafeAreaView>
     )

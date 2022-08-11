@@ -122,7 +122,7 @@ export const HomePage: React.FC<Props> = (props) => {
         <SafeAreaView style={styles.page_container}>
             <StatusBar
                 animated={true}
-                backgroundColor={theme.main.color_4}
+                backgroundColor={theme.main.color_1}
                 hidden={false}/>
             <View style={{
                 width: '90%',
@@ -146,7 +146,7 @@ export const HomePage: React.FC<Props> = (props) => {
 
                 height: 300,
             }}>
-                <View style={{alignItems: 'center'}}>
+                <View style={{alignItems: 'center', paddingBottom:100,}}>
 
                     <Course/>
                     <Course/>

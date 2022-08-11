@@ -10,6 +10,8 @@ export enum Screens {
     MusicPage = "MusicPage",
     ProfilePage = "ProfilePage",
     SearchPage = "SearchPage",
+    ChoosePlanPage = "ChoosePlanPage",
+    SuccessPaymentPage = "SuccessPaymentPage",
 }
 
 interface RouteState {

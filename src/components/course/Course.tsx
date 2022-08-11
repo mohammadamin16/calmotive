@@ -40,9 +40,12 @@ export const Course: React.FC<MenuItemProps> = (props) => {
                 flexDirection: 'column',
                 width: '40%',
                 height: '100%',
-                alignItems: 'center'
+                alignItems: 'center',
+                // borderTopRightRadius:25,
             }}>
-                <Image source={cover} style={{width: "100%", height: '100%'}}/>
+                <Image source={cover} style={{width: "100%",
+                    borderTopRightRadius: props.full_width ? 25 : 0,
+                    height: '100%'}}/>
             </View>
             <View style={{
                 flexDirection: 'column',

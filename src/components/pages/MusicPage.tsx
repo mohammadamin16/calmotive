@@ -71,8 +71,9 @@ export const MusicPage: React.FC<Props> = (props) => {
             flex: 1,
             flexDirection: "column",
             backgroundColor: theme.main.color_5,
+            paddingTop:100,
             alignItems: 'center',
-            justifyContent: "center",
+            // justifyContent: "center",
         },
         header: {
             position: "absolute",
@@ -91,7 +92,7 @@ export const MusicPage: React.FC<Props> = (props) => {
             flexWrap: "wrap",
             width: "90%",
             // height:"80%",
-            alignItems: "center",
+            // alignItems: "center",
             marginTop: 10,
             justifyContent: "center",
             // borderWidth: 1,
@@ -126,13 +127,60 @@ export const MusicPage: React.FC<Props> = (props) => {
             logo_url: fire_image,
             title: "آتش",
         },
+        {
+            id: 5,
+            track_url: "",
+            logo_url: fire_image,
+            title: "آتش",
+        },
+        {
+            id: 6,
+            track_url: "",
+            logo_url: fire_image,
+            title: "آتش",
+        },
+        {
+            id: 7,
+            track_url: "",
+            logo_url: fire_image,
+            title: "آتش",
+        },
+        {
+            id: 8,
+            track_url: "",
+            logo_url: fire_image,
+            title: "آتش",
+        },
+        {
+            id: 9,
+            track_url: "",
+            logo_url: fire_image,
+            title: "آتش",
+        },
+        {
+            id: 10,
+            track_url: "",
+            logo_url: fire_image,
+            title: "آتش",
+        },
+        {
+            id: 11,
+            track_url: "",
+            logo_url: fire_image,
+            title: "آتش",
+        },
+        {
+            id: 12,
+            track_url: "",
+            logo_url: fire_image,
+            title: "آتش",
+        },
     ]
     useEffect(() => {
         dispatch(MixerActions.set_tracks(loaded_tracks))
 
     }, [])
-    console.log("active", active_tracks)
-    console.log("all", tracks)
+
     return (
         <SafeAreaView style={styles.page_container}>
             <StatusBar
@@ -149,6 +197,12 @@ export const MusicPage: React.FC<Props> = (props) => {
                     rotation={BackButtonRotation.left}
                 />
             </View>
+
+            <Body
+                style={{bottom:20,}}
+                weight={BodyWeight.Bold} size={BodySizes.Medium} color={theme.alternative.white}>
+                {"با لمس هر آیکون آن را پخش کنید."}
+            </Body>
             <View style={styles.music_item_container}>
                 {tracks?.map((track) => (
                     <MusicItem

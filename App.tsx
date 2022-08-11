@@ -14,6 +14,8 @@ import {MusicPage} from "./src/components/pages/MusicPage";
 import {MainMenu} from "./src/components/MainMenu";
 import {ProfilePage} from "./src/components/pages/ProfilePage";
 import {SearchPage} from "./src/components/pages/SearchPage";
+import {ChoosePlanPage} from "./src/components/pages/ChoosePlanPage";
+import {SuccessPaymentPage} from "./src/components/pages/SuccessPaymentPage";
 
 const Stack = createNativeStackNavigator<ParamListBase>();
 
@@ -40,6 +42,8 @@ const RouterContainer = () => {
                 <Stack.Screen name={Screens.MusicPage} component={MusicPage}/>
                 <Stack.Screen name={Screens.ProfilePage} component={ProfilePage}/>
                 <Stack.Screen name={Screens.SearchPage} component={SearchPage}/>
+                <Stack.Screen name={Screens.ChoosePlanPage} component={ChoosePlanPage}/>
+                <Stack.Screen name={Screens.SuccessPaymentPage} component={SuccessPaymentPage}/>
             </Stack.Navigator>
             <MainMenu/>
         </NavigationContainer>

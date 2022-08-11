@@ -31,7 +31,10 @@ export const MenuItem: React.FC<MenuItemProps> = ({icon, active_icon, isActive, 
                 dispatch(RouteActions.setActiveScreen(screen))
                 navigation.navigate(screen)
             }}
-            style={{width: 30, height: 30}}>
+            style={{
+                // backgroundColor:"red",
+                padding:10,
+                width: 50, height: 50}}>
             <Image source={isActive ? active_icon : icon} style={{width: 30, height: 30}}/>
         </TouchableOpacity>
     )
@@ -64,7 +67,7 @@ export const MainMenu: React.FC = (props) => {
                     backgroundColor: "#FFE3D8",
                     width: '90%',
                     borderRadius: 25,
-                    paddingVertical: 20,
+                    paddingVertical: 5,
                     paddingHorizontal: 50,
                     flexDirection: 'row',
                     justifyContent: 'space-between',
@@ -75,10 +78,10 @@ export const MainMenu: React.FC = (props) => {
                           isActive={activePage === Screens.HomePage}/>
                 <MenuItem screen={Screens.MusicPage} icon={music_icon} active_icon={active_music_icon}
                           isActive={activePage === Screens.MusicPage}/>
-                <MenuItem screen={Screens.ProfilePage} icon={user_icon} active_icon={active_profile_icon}
-                          isActive={activePage === Screens.ProfilePage}/>
                 <MenuItem screen={Screens.SearchPage} icon={search_icon} active_icon={active_search_icon}
                           isActive={activePage === Screens.SearchPage}/>
+                <MenuItem screen={Screens.ProfilePage} icon={user_icon} active_icon={active_profile_icon}
+                          isActive={activePage === Screens.ProfilePage}/>
             </View>
         </View>
     )
