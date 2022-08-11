@@ -55,8 +55,6 @@ export const BackButton: React.FC<Props> = ({
                 source={simple_icon}
                 style={{
                     resizeMode: 'contain',
-                    // position:"absolute",
-                    // top:10,
                     transform: [{rotate: rotation}],
                     width: 20,
                     maxHeight: 40,

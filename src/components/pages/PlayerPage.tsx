@@ -52,7 +52,6 @@ export const PlayerPage: React.FC<Props> = ({navigation}) => {
     React.useEffect(() => {
         return sound1
             ? () => {
-                console.log('Unloading Sound');
                 sound1.unloadAsync();
             }
             : undefined;

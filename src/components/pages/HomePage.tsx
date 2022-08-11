@@ -5,7 +5,7 @@ import {useTheme} from "../../UI/theme";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import {RootStackParamList} from "../../../App";
 import {Screens} from "../../routes/RouteSlice";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useNavigation} from "@react-navigation/native";
 import books_icon from '../../assets/images/icons/books.png';
 import flame_icon from '../../assets/images/icons/flame.png';
@@ -23,20 +23,29 @@ import user_icon from '../../assets/images/icons/user.png';
 import {strings} from "../../assets/strings";
 import {Course} from "../course/Course";
 import {MainMenu} from "../course/MainMenu";
+import {RootState} from "../../../rootReducer";
+import {CourseActions} from "../../course/CourseSlice";
 
 type Props = NativeStackScreenProps<RootStackParamList, Screens.LoginPage>;
 
 interface CategoryIconProps {
+    id: number,
+    is_active: boolean,
     icon: any,
     title: string,
 }
 
-export const CategoryIcon: React.FC<CategoryIconProps> = ({icon, title}) => {
+export const CategoryIcon: React.FC<CategoryIconProps> = ({icon, id, title, is_active},) => {
     const theme = useTheme()
+    const dispatch = useDispatch()
     return (
-        <View style={{flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
+        <TouchableOpacity
+            onPress={() => {
+                dispatch(CourseActions.set_filter(is_active ? 0 : id))
+            }}
+            style={{flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
             <View style={{
-                backgroundColor: theme.main.color_5, width: 50,
+                backgroundColor: is_active ? theme.main.color_3 : theme.main.color_5, width: 50,
                 height: 50, borderRadius: 5, justifyContent: 'center', alignItems: 'center'
             }}>
                 <Image source={icon} style={{width: 40, height: 40}}/>
@@ -44,10 +53,15 @@ export const CategoryIcon: React.FC<CategoryIconProps> = ({icon, title}) => {
             <Body weight={BodyWeight.Medium} size={BodySizes.Medium}>
                 {title}
             </Body>
-        </View>
+        </TouchableOpacity>
     )
 }
 
+interface Category {
+    id: number,
+    title: string,
+    icon: any,
+}
 
 export const HomePage: React.FC<Props> = (props) => {
     const theme = useTheme()
@@ -75,7 +89,34 @@ export const HomePage: React.FC<Props> = (props) => {
     });
     const dispatch = useDispatch()
     const navigation = useNavigation()
-
+    const selectedFilterId = useSelector((state: RootState) => state.course.active_filter)
+    const categories: Category[] = [
+        {
+            id: 1,
+            title: strings.homepage.podcasts,
+            icon: headphone_icon
+        },
+        {
+            id: 2,
+            title: strings.homepage.course,
+            icon: books_icon
+        },
+        {
+            id: 3,
+            title: strings.homepage.breath,
+            icon: wind_icon
+        },
+        {
+            id: 4,
+            title: strings.homepage.sleep,
+            icon: moon_icon
+        },
+        {
+            id: 5,
+            title: strings.homepage.new_items,
+            icon: flame_icon
+        },
+    ]
 
     return (
         <SafeAreaView style={styles.page_container}>
@@ -90,11 +131,13 @@ export const HomePage: React.FC<Props> = (props) => {
                 justifyContent: "space-between",
                 alignItems: 'center',
             }}>
-                <CategoryIcon icon={headphone_icon} title={strings.homepage.podcasts}/>
-                <CategoryIcon icon={books_icon} title={strings.homepage.course}/>
-                <CategoryIcon icon={wind_icon} title={strings.homepage.breath}/>
-                <CategoryIcon icon={moon_icon} title={strings.homepage.sleep}/>
-                <CategoryIcon icon={flame_icon} title={strings.homepage.new_items}/>
+                {categories.map(c =>
+                    <CategoryIcon
+                        key={c.id}
+                        id={c.id}
+                        is_active={selectedFilterId === c.id}
+                        icon={c.icon} title={c.title}/>
+                )}
             </View>
             <ScrollView style={{
                 marginTop: 20,

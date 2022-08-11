@@ -31,7 +31,7 @@ const mixerSlice = createSlice({
             state.active_tracks.push(action.payload)
         },
         deactivate(state, action: PayloadAction<number>) {
-            state.active_tracks.filter(id => id !== action.payload)
+            state.active_tracks = state.active_tracks.filter(id => id !== action.payload)
         },
     },
 })

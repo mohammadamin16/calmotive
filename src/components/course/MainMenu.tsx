@@ -41,7 +41,6 @@ export const MainMenu: React.FC = (props) => {
     const activePage = useSelector((state: RootState) => state.route.screen)
     const dispatch = useDispatch()
     const navigation = useNavigation()
-    console.log("active:", activePage)
 
     return (
         <View

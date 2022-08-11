@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {Image, SafeAreaView, StatusBar, StyleSheet, TouchableOpacity, View} from "react-native";
 import {Body, BodySizes, BodyWeight} from "../../UI/texts";
 import {useTheme} from "../../UI/theme";
@@ -12,6 +12,7 @@ import fire_image from "../../assets/images/music_items/fire.png"
 import {BackButton, BackButtonPlacement, BackButtonRotation} from "../course/BackButton";
 import {MixerActions, Track} from "../../mixer/MixerSlice";
 import {RootState} from "../../../rootReducer";
+import play_icon from "../../assets/images/icons/play.png"
 
 type Props = NativeStackScreenProps<RootStackParamList, Screens.LoginPage>;
 
@@ -26,8 +27,6 @@ export const MusicItem: React.FC<Track> = (props) => {
             alignItems: "center",
             marginBottom: 30,
             marginHorizontal: 20,
-            borderWidth: props.is_active ? 2 : 0,
-            borderColor: theme.alternative.white,
         },
         music_item: {
             width: 70,
@@ -35,6 +34,8 @@ export const MusicItem: React.FC<Track> = (props) => {
             overflow: "hidden",
             justifyContent: "center",
             alignItems: "center",
+            borderColor: theme.alternative.white,
+            borderWidth: props.is_active ? 2 : 0,
             borderRadius: 25,
             backgroundColor: props.is_active ? theme.main.color_2 : theme.main.color_1
         },
@@ -43,7 +44,7 @@ export const MusicItem: React.FC<Track> = (props) => {
         <View style={styles.container}>
             <TouchableOpacity
                 style={styles.music_item}
-                onPress={() => dispatch(MixerActions.activate(props.id))}
+                onPress={() => props.is_active ? dispatch(MixerActions.deactivate(props.id)) : dispatch(MixerActions.activate(props.id))}
             >
                 <Image source={fire_image} style={{
                     maxWidth: 40,
@@ -63,6 +64,7 @@ export const MusicItem: React.FC<Track> = (props) => {
 
 export const MusicPage: React.FC<Props> = (props) => {
     const theme = useTheme()
+    const [status, setStatus] = useState<"Playing" | "Stopping">("Stopping");
 
     const styles = StyleSheet.create({
         page_container: {
@@ -107,19 +109,19 @@ export const MusicPage: React.FC<Props> = (props) => {
             title: "آتش",
         },
         {
-            id: 1,
+            id: 2,
             track_url: "",
             logo_url: fire_image,
             title: "آتش",
         },
         {
-            id: 1,
+            id: 3,
             track_url: "",
             logo_url: fire_image,
             title: "آتش",
         },
         {
-            id: 1,
+            id: 4,
             track_url: "",
             logo_url: fire_image,
             title: "آتش",
@@ -150,6 +152,7 @@ export const MusicPage: React.FC<Props> = (props) => {
             <View style={styles.music_item_container}>
                 {tracks?.map((track) => (
                     <MusicItem
+                        key={track.id}
                         title={track.title}
                         id={track.id}
                         track_url={track.track_url}
@@ -157,6 +160,39 @@ export const MusicPage: React.FC<Props> = (props) => {
                         is_active={Boolean(active_tracks.filter(t => t === track.id).length)}
                     />
                 ))}
+            </View>
+            <View
+                style={{
+                    display: active_tracks.length === 0 ? "none" : "flex",
+                    width: "100%",
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    position: 'absolute',
+                    bottom: 100,
+                    zIndex: 10,
+                }}
+            >
+                <View
+                    style={{
+                        backgroundColor: theme.main.color_2,
+                        width: '90%',
+                        borderRadius: 25,
+                        paddingVertical: 20,
+                        paddingHorizontal: 50,
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                    }}
+                >
+                    <Image source={play_icon} style={{width: 30, resizeMode: "contain", maxHeight: 30}}/>
+                    <Body
+                        weight={BodyWeight.Bold}
+                        size={BodySizes.Medium}
+                        color={theme.alternative.white}
+                        style={{direction: "rtl"}}
+                    >
+                        {active_tracks.length + " ترک در حال پخش "}
+                    </Body>
+                </View>
             </View>
         </SafeAreaView>
     )
