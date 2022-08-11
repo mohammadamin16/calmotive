@@ -1,9 +1,9 @@
 import React from "react";
 import {Image, TouchableOpacity} from "react-native";
-import {useTheme} from "../../UI/theme";
+import {useTheme} from "../UI/theme";
 import {useNavigation} from "@react-navigation/native";
-import {RouteActions, Screens} from "../../routes/RouteSlice";
-import simple_icon from "../../assets/images/icons/simple_arrow.png";
+import {RouteActions, Screens} from "../routes/RouteSlice";
+import simple_icon from "../assets/images/icons/simple_arrow.png";
 import {useDispatch} from "react-redux";
 
 export enum BackButtonPlacement {

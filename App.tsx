@@ -11,7 +11,7 @@ import {HomePage} from "./src/components/pages/HomePage";
 import {PlayerPage} from "./src/components/pages/PlayerPage";
 import {CourseDetailPage} from "./src/components/pages/CourseDetailPage";
 import {MusicPage} from "./src/components/pages/MusicPage";
-import {MainMenu} from "./src/components/course/MainMenu";
+import {MainMenu} from "./src/components/MainMenu";
 import {ProfilePage} from "./src/components/pages/ProfilePage";
 import {SearchPage} from "./src/components/pages/SearchPage";
 

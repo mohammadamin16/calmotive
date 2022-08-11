@@ -22,7 +22,7 @@ import active_music_icon from '../../assets/images/icons/active_music.png';
 import user_icon from '../../assets/images/icons/user.png';
 import {strings} from "../../assets/strings";
 import {Course} from "../course/Course";
-import {MainMenu} from "../course/MainMenu";
+import {MainMenu} from "../MainMenu";
 import {RootState} from "../../../rootReducer";
 import {CourseActions} from "../../course/CourseSlice";
 

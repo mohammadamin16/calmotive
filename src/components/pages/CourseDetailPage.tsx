@@ -7,7 +7,7 @@ import {Screens} from "../../routes/RouteSlice";
 import {useDispatch} from "react-redux";
 import {Course} from "../course/Course";
 import {Episode} from "../course/Episode";
-import {BackButton, BackButtonPlacement, BackButtonRotation} from "../course/BackButton";
+import {BackButton, BackButtonPlacement, BackButtonRotation} from "../BackButton";
 
 type Props = NativeStackScreenProps<RootStackParamList, Screens.LoginPage>;
 

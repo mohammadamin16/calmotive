@@ -1,18 +1,18 @@
 import React from "react";
 import {Image, TouchableOpacity, View} from "react-native";
-import {useTheme} from "../../UI/theme";
-import {RouteActions, Screens} from "../../routes/RouteSlice";
+import {useTheme} from "../UI/theme";
+import {RouteActions, Screens} from "../routes/RouteSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigation} from "@react-navigation/native";
-import home_icon from "../../assets/images/icons/home.png";
-import active_home_icon from "../../assets/images/icons/active_home.png";
-import music_icon from "../../assets/images/icons/music.png";
-import active_music_icon from "../../assets/images/icons/active_music.png";
-import user_icon from "../../assets/images/icons/user.png";
-import active_profile_icon from "../../assets/images/icons/active_profile.png";
-import search_icon from "../../assets/images/icons/search.png";
-import active_search_icon from "../../assets/images/icons/active_search.png";
-import {RootState} from "../../../rootReducer";
+import home_icon from "../assets/images/icons/home.png";
+import active_home_icon from "../assets/images/icons/active_home.png";
+import music_icon from "../assets/images/icons/music.png";
+import active_music_icon from "../assets/images/icons/active_music.png";
+import user_icon from "../assets/images/icons/user.png";
+import active_profile_icon from "../assets/images/icons/active_profile.png";
+import search_icon from "../assets/images/icons/search.png";
+import active_search_icon from "../assets/images/icons/active_search.png";
+import {RootState} from "../../rootReducer";
 
 interface MenuItemProps {
     icon: any,

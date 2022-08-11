@@ -9,7 +9,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useNavigation} from "@react-navigation/native";
 import {strings} from "../../assets/strings";
 import fire_image from "../../assets/images/music_items/fire.png"
-import {BackButton, BackButtonPlacement, BackButtonRotation} from "../course/BackButton";
+import {BackButton, BackButtonPlacement, BackButtonRotation} from "../BackButton";
 import {MixerActions, Track} from "../../mixer/MixerSlice";
 import {RootState} from "../../../rootReducer";
 import play_icon from "../../assets/images/icons/play.png"

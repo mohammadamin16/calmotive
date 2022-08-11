@@ -13,7 +13,7 @@ import pause_icon from "../../assets/images/icons/pause.png";
 import backward_icon from "../../assets/images/icons/backward.png";
 import forward_icon from "../../assets/images/icons/forward.png";
 import bg_image from "../../assets/images/course_covers/cover1.png";
-import {BackButton, BackButtonRotation} from "../course/BackButton";
+import {BackButton, BackButtonRotation} from "../BackButton";
 
 type Props = NativeStackScreenProps<RootStackParamList, Screens.LoginPage>;
 
