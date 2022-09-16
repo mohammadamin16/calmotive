@@ -1,5 +1,6 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+import org.apache.tools.ant.taskdefs.condition.Os
 
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
     ext {
@@ -28,21 +29,9 @@ buildscript {
         classpath('com.android.tools.build:gradle:7.0.4')
         classpath('com.facebook.react:react-native-gradle-plugin')
         classpath('de.undercouch:gradle-download-task:4.1.2')
-
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
-
-//      plugins {
-//         alias(libs.plugins.gradle.android.compose.app)
-//      }
-
-//    android {
-//     	compileOptions {
-//         	sourceCompatibility = JavaVersion.VERSION_11
-//         	targetCompatibility = JavaVersion.VERSION_11
-//     	}
-// 	}
 }
 
 allprojects {
@@ -66,7 +55,5 @@ allprojects {
             }
         }
         maven { url 'https://www.jitpack.io' }
-
-
     }
 }

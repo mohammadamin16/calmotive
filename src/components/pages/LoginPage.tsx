@@ -8,7 +8,6 @@ import {RouteActions, Screens} from "../../routes/RouteSlice";
 import {strings} from "../../assets/strings";
 import ArrowIcon from "../../assets/images/arrow.png";
 import {useDispatch} from "react-redux";
-import {useNavigation} from "@react-navigation/native";
 
 type Props = NativeStackScreenProps<RootStackParamList, Screens.LoginPage>;
 
