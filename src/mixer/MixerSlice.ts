@@ -7,7 +7,7 @@ export interface Track {
   id: number;
   track_url?: string;
   track?: any;
-  logo_url: string | ImageSourcePropType;
+  logo_url: ImageSourcePropType;
   is_active?: boolean;
 }
 

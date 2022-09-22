@@ -19,6 +19,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import {strings} from '../../assets/strings';
 import fire_image from '../../assets/images/music_items/fire.png';
+import wind_image from '../../assets/images/music_items/wind.png';
+import rain_image from '../../assets/images/music_items/rain.png';
 import {BackButton, BackButtonPlacement, BackButtonRotation} from '../BackButton';
 import {MixerActions, Track} from '../../mixer/MixerSlice';
 import {RootState} from '../../../rootReducer';
@@ -56,7 +58,7 @@ export const MusicItem: React.FC<Track & {onPress: () => void}> = props => {
     <View style={styles.container}>
       <TouchableHighlight style={styles.music_item} onPress={props.onPress}>
         <Image
-          source={fire_image}
+          source={props.logo_url}
           style={{
             maxWidth: 40,
             resizeMode: 'contain',
@@ -115,7 +117,7 @@ export const MusicPage: React.FC<Props> = props => {
       id: 1,
       track_url: '../../assets/audio/music/wind.wav',
       track: require('../../assets/audio/music/wind.wav'),
-      logo_url: fire_image,
+      logo_url: wind_image,
       title: 'wind',
     },
     {
@@ -124,6 +126,13 @@ export const MusicPage: React.FC<Props> = props => {
       track: require('../../assets/audio/music/fire.wav'),
       logo_url: fire_image,
       title: 'fire',
+    },
+    {
+      id: 3,
+      track_url: '../../assets/audio/music/rain.wav',
+      track: require('../../assets/audio/music/rain.wav'),
+      logo_url: rain_image,
+      title: 'rain',
     },
   ];
 
@@ -204,7 +213,6 @@ export const MusicPage: React.FC<Props> = props => {
               track_url={track.track_url}
               logo_url={track.logo_url}
               is_active={isActive}
-              // onPress={() => play_track(track.id).catch(error => alert(error))}
               onPress={() => {
                 !isActive
                   ? play_track(track.id).catch(error => alert(error))
