@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {
   Image,
   SafeAreaView,
+  ScrollView,
   StatusBar,
   StyleSheet,
   TouchableHighlight,
@@ -21,6 +22,15 @@ import {strings} from '../../assets/strings';
 import fire_image from '../../assets/images/music_items/fire.png';
 import wind_image from '../../assets/images/music_items/wind.png';
 import rain_image from '../../assets/images/music_items/rain.png';
+import bell_image from '../../assets/images/music_items/bell.png';
+import birds_image from '../../assets/images/music_items/birds.png';
+import car_image from '../../assets/images/music_items/car.png';
+import cow_image from '../../assets/images/music_items/cow.png';
+import jungle_image from '../../assets/images/music_items/jungle.png';
+import ocean_image from '../../assets/images/music_items/ocean.png';
+import river_image from '../../assets/images/music_items/river.png';
+import thunder_image from '../../assets/images/music_items/thunder.png';
+import water_walk_image from '../../assets/images/music_items/water_walk.png';
 import {BackButton, BackButtonPlacement, BackButtonRotation} from '../BackButton';
 import {MixerActions, Track} from '../../mixer/MixerSlice';
 import {RootState} from '../../../rootReducer';
@@ -39,8 +49,9 @@ export const MusicItem: React.FC<Track & {onPress: () => void}> = props => {
   const styles = StyleSheet.create({
     container: {
       alignItems: 'center',
-      marginBottom: 30,
-      marginHorizontal: 20,
+      marginVertical: 10,
+      width: 100,
+      marginHorizontal: 10,
     },
     music_item: {
       width: 70,
@@ -60,12 +71,19 @@ export const MusicItem: React.FC<Track & {onPress: () => void}> = props => {
         <Image
           source={props.logo_url}
           style={{
+            width: 40,
+            height: 40,
             maxWidth: 40,
             resizeMode: 'contain',
           }}
         />
       </TouchableHighlight>
-      <Body weight={BodyWeight.Light} size={BodySizes.Medium} color={theme.alternative.white}>
+      <Body
+        weight={BodyWeight.Light}
+        size={BodySizes.Medium}
+        // style={{height: 10}}
+        color={theme.alternative.white}
+      >
         {props.title}
       </Body>
     </View>
@@ -106,6 +124,7 @@ export const MusicPage: React.FC<Props> = props => {
       marginTop: 10,
       justifyContent: 'center',
       // borderWidth: 1,
+      paddingBottom: 100,
     },
   });
   const dispatch = useDispatch();
@@ -118,21 +137,84 @@ export const MusicPage: React.FC<Props> = props => {
       track_url: '../../assets/audio/music/wind.wav',
       track: require('../../assets/audio/music/wind.wav'),
       logo_url: wind_image,
-      title: 'wind',
+      title: strings.musics.wind,
     },
     {
       id: 2,
       track_url: '../../assets/audio/music/fire.wav',
       track: require('../../assets/audio/music/fire.wav'),
       logo_url: fire_image,
-      title: 'fire',
+      title: strings.musics.fire,
     },
     {
       id: 3,
       track_url: '../../assets/audio/music/rain.wav',
       track: require('../../assets/audio/music/rain.wav'),
       logo_url: rain_image,
-      title: 'rain',
+      title: strings.musics.rain,
+    },
+    {
+      id: 4,
+      track_url: '../../assets/audio/music/cows.mp3',
+      track: require('../../assets/audio/music/cows.mp3'),
+      logo_url: cow_image,
+      title: strings.musics.cows,
+    },
+    {
+      id: 5,
+      track_url: '../../assets/audio/music/bell.mp3',
+      track: require('../../assets/audio/music/bell.mp3'),
+      logo_url: bell_image,
+      title: strings.musics.bell,
+    },
+    {
+      id: 6,
+      track_url: '../../assets/audio/music/birds.wav',
+      track: require('../../assets/audio/music/birds.wav'),
+      logo_url: rain_image,
+      title: strings.musics.birds,
+    },
+    {
+      id: 7,
+      track_url: '../../assets/audio/music/car_noise.mp3',
+      track: require('../../assets/audio/music/car_noise.mp3'),
+      logo_url: car_image,
+      title: strings.musics.car,
+    },
+    {
+      id: 8,
+      track_url: '../../assets/audio/music/footstep_in_water.mp3',
+      track: require('../../assets/audio/music/footstep_in_water.mp3'),
+      logo_url: water_walk_image,
+      title: strings.musics.water_walk,
+    },
+    {
+      id: 9,
+      track_url: '../../assets/audio/music/jungle.wav',
+      track: require('../../assets/audio/music/jungle.wav'),
+      logo_url: jungle_image,
+      title: strings.musics.jungle,
+    },
+    {
+      id: 10,
+      track_url: '../../assets/audio/music/ocean.wav',
+      track: require('../../assets/audio/music/ocean.wav'),
+      logo_url: ocean_image,
+      title: strings.musics.ocean,
+    },
+    {
+      id: 11,
+      track_url: '../../assets/audio/music/river.wav',
+      track: require('../../assets/audio/music/river.wav'),
+      logo_url: river_image,
+      title: strings.musics.river,
+    },
+    {
+      id: 12,
+      track_url: '../../assets/audio/music/thunder.wav',
+      track: require('../../assets/audio/music/thunder.wav'),
+      logo_url: thunder_image,
+      title: strings.musics.thunder,
     },
   ];
 
@@ -202,26 +284,40 @@ export const MusicPage: React.FC<Props> = props => {
       >
         {'با لمس هر آیکون آن را پخش کنید.'}
       </Body>
-      <View style={styles.music_item_container}>
-        {tracks?.map(track => {
-          const isActive = Boolean(active_tracks.filter(t => t === track.id).length);
-          return (
-            <MusicItem
-              key={track.id}
-              title={track.title}
-              id={track.id}
-              track_url={track.track_url}
-              logo_url={track.logo_url}
-              is_active={isActive}
-              onPress={() => {
-                !isActive
-                  ? play_track(track.id).catch(error => alert(error))
-                  : pause_track(track.id).catch(error => alert(error));
-              }}
-            />
-          );
-        })}
-      </View>
+      <ScrollView
+        style={{
+          marginTop: 20,
+          // justifyContent:"center",
+          // alignItems:"center",
+          width: '100%',
+          flexDirection: 'column',
+          height: 300,
+        }}
+        contentContainerStyle={{
+          alignItems: 'center',
+        }}
+      >
+        <View style={styles.music_item_container}>
+          {tracks?.map(track => {
+            const isActive = Boolean(active_tracks.filter(t => t === track.id).length);
+            return (
+              <MusicItem
+                key={track.id}
+                title={track.title}
+                id={track.id}
+                track_url={track.track_url}
+                logo_url={track.logo_url}
+                is_active={isActive}
+                onPress={() => {
+                  !isActive
+                    ? play_track(track.id).catch(error => alert(error))
+                    : pause_track(track.id).catch(error => alert(error));
+                }}
+              />
+            );
+          })}
+        </View>
+      </ScrollView>
       <View
         style={{
           display: active_tracks.length === 0 ? 'none' : 'flex',
