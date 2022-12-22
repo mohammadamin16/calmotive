@@ -1,23 +1,22 @@
 {
   "expo": {
+    "platforms": ["web", "android", "ios"],
     "name": "calmotive",
     "slug": "calmotive",
     "version": "1.0.0",
     "owner": "mohammadamin16",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/logo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "image": "./assets/splashScreen.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#F8B195"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.mohammadamin16.calmotive"
@@ -30,7 +29,12 @@
       "package": "com.mohammadamin16.calmotive"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/logo.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "1e3f3ed6-881f-4ce0-a4a1-17bb4de5758b"
+      }
     }
   }
 }
