@@ -38,10 +38,10 @@ const RouterContainer = () => {
 
   const isLoggedIn = useMemo(() => '', []);
   const dispatch = useDispatch();
-  dispatch(RouteActions.setActiveScreen(Screens.HomePage));
+  dispatch(RouteActions.setActiveScreen(Screens.ChoosePlanPage));
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={Screens.HomePage} screenOptions={{headerShown: false}}>
+      <Stack.Navigator initialRouteName={Screens.ChoosePlanPage} screenOptions={{headerShown: false}}>
         <Stack.Screen name={Screens.SplashScreen} component={SplashScreen} />
         <Stack.Screen name={Screens.WelcomeScreen} component={WelcomePage} />
         <Stack.Screen name={Screens.LoginPage} component={LoginPage} />
