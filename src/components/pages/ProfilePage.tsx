@@ -172,25 +172,21 @@ export const ProfilePage: React.FC<Props> = props => {
         <Avatar image={sample_avatar} />
         <Icon style={{bottom: 20}} size={30} image={like_icon} />
       </View>
-      {/*<View style={{*/}
-      {/*    flexDirection: "row",*/}
-      {/*    alignItems: "center",*/}
-      {/*    justifyContent: "space-between",*/}
-      {/*    width: "80%"*/}
-      {/*}}>*/}
-      {/*    <CustomButton*/}
-      {/*        textColor={theme.alternative.white}*/}
-      {/*        text={"تمدید اشتراک"}*/}
-      {/*        onPress={() => navigation.navigate(Screens.ChoosePlanPage)}*/}
-      {/*    />*/}
-
-      {/*    <CustomButton*/}
-      {/*        textColor={theme.alternative.white}*/}
-      {/*        text={"25 از اشتراک باقیمانده"}*/}
-      {/*        color={theme.main.color_4}*/}
-      {/*        // onPress={() => alert()}*/}
-      {/*    />*/}
-      {/*</View>*/}
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          width: '80%',
+        }}
+      >
+        {/*    <CustomButton*/}
+        {/*        textColor={theme.alternative.white}*/}
+        {/*        text={"25 از اشتراک باقیمانده"}*/}
+        {/*        color={theme.main.color_4}*/}
+        {/*        // onPress={() => alert()}*/}
+        {/*    />*/}
+      </View>
       {/*<View style={{*/}
       {/*    marginTop: 10,*/}
       {/*    flexDirection: "row",*/}
@@ -206,11 +202,30 @@ export const ProfilePage: React.FC<Props> = props => {
       {/*        // onPress={() => alert()}*/}
       {/*    />*/}
       {/*</View>*/}
-
-      <Body weight={BodyWeight.Regular} style={{marginBottom: 20}} size={BodySizes.Medium}>
-        {'فعالیت تو در کالموتیو:'}
-      </Body>
-
+      <View
+        style={{
+          width: '100%',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: 100,
+          // backgroundColor: 'red',
+        }}
+      >
+        <CustomButton
+          style={{
+            bottom: 'auto',
+            position: 'absolute',
+            paddingHorizontal: 20,
+          }}
+          textColor={theme.alternative.white}
+          onPress={() => {
+            dispatch(RouteActions.setActiveScreen(Screens.ChoosePlanPage));
+            navigation.navigate(Screens.ChoosePlanPage);
+          }}
+          text={'خرید اشتراک'}
+          color={theme.main.color_4}
+        />
+      </View>
       {/*<View style={{*/}
       {/*    width: "100%",*/}
       {/*    justifyContent: "center",*/}

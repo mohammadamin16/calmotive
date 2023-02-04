@@ -132,7 +132,7 @@ export const MainMenu: React.FC = props => {
         <MenuItem
           screen={Screens.ProfilePage}
           icon={user_icon}
-          isDisable={true}
+          // isDisable={true}
           active_icon={active_profile_icon}
           isActive={activePage === Screens.ProfilePage}
         />
