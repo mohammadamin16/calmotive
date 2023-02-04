@@ -22,14 +22,17 @@ export const WelcomePage: React.FC<Props> = ({navigation}) => {
             alignItems: 'center',
             justifyContent: 'center',
         },
-
+        
         cover_container: {
             flex: 1,
             backgroundColor: theme.main.color_4,
+            // backgroundColor: "red",
             position: "absolute",
             top: 0,
+            // height:200,
             paddingTop: '10%',
             width: '100%',
+            // height:200,
             borderBottomLeftRadius: 25,
             borderBottomRightRadius: 25,
             borderStyle: undefined,
@@ -43,7 +46,7 @@ export const WelcomePage: React.FC<Props> = ({navigation}) => {
             backgroundColor={theme.main.color_4}
             hidden={false}/>
         <View style={styles.cover_container}>
-            <Image source={welcome_cover}/>
+            <Image style={{width:"100", height:"100", aspectRatio:1.42}} source={welcome_cover}/>
         </View>
         <Body size={BodySizes.Large} weight={BodyWeight.Regular} color={theme.alternative.black}>
             {strings.welcomeToCalmotive}
@@ -74,14 +77,14 @@ export const WelcomePage: React.FC<Props> = ({navigation}) => {
                 alignItems: 'center'
             }}
         >
-            <TouchableOpacity>
-                <Body size={BodySizes.Small} weight={BodyWeight.Bold} color={theme.main.color_5}>
-                    {strings.login}
-                </Body>
-            </TouchableOpacity>
-            <Body style={{marginHorizontal: 10}} size={BodySizes.Small} weight={BodyWeight.Regular}>
-                {strings.u_got_account}
-            </Body>
+        {/*    <TouchableOpacity>*/}
+        {/*        <Body size={BodySizes.Small} weight={BodyWeight.Bold} color={theme.main.color_5}>*/}
+        {/*            {strings.login}*/}
+        {/*        </Body>*/}
+        {/*    </TouchableOpacity>*/}
+        {/*    <Body style={{marginHorizontal: 10}} size={BodySizes.Small} weight={BodyWeight.Regular}>*/}
+        {/*        {strings.u_got_account}*/}
+        {/*    </Body>*/}
         </View>
     </View>
 }

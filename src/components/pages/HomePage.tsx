@@ -20,20 +20,12 @@ import flame_icon from '../../assets/images/icons/flame.png';
 import headphone_icon from '../../assets/images/icons/headphones.png';
 import moon_icon from '../../assets/images/icons/moon.png';
 import wind_icon from '../../assets/images/icons/wind.png';
-import home_icon from '../../assets/images/icons/home.png';
-import music_icon from '../../assets/images/icons/music.png';
-import search_icon from '../../assets/images/icons/search.png';
-import active_search_icon from '../../assets/images/icons/active_search.png';
-import active_home_icon from '../../assets/images/icons/active_home.png';
-import active_profile_icon from '../../assets/images/icons/active_profile.png';
-import active_music_icon from '../../assets/images/icons/active_music.png';
-import user_icon from '../../assets/images/icons/user.png';
 import {strings} from '../../assets/strings';
-import {Course} from '../course/Course';
-import {MainMenu} from '../MainMenu';
+import {Course, CourseProps} from '../course/Course';
 import {RootState} from '../../../rootReducer';
 import {CourseActions} from '../../course/CourseSlice';
-import {get_musics, saveUser, signup} from '../../core';
+import {Header} from '../Header';
+import cover from '../../assets/images/course_covers/cover1.png';
 
 type Props = NativeStackScreenProps<RootStackParamList, Screens.LoginPage>;
 
@@ -79,6 +71,16 @@ interface Category {
   icon: any;
 }
 
+const courses: CourseProps[] = [
+  {
+    icon_url: cover,
+    description:
+      'دوره در هفت روز طراحی شده\n' +
+      'به طوری که روزانه با هم مدیتیشن میکنیم و نکات و تکنیک هارو یاد میگیرید',
+    title: 'دوره شروع مدیتیشن',
+    episode_number: 5,
+  },
+];
 export const HomePage: React.FC<Props> = props => {
   const theme = useTheme();
 
@@ -134,42 +136,32 @@ export const HomePage: React.FC<Props> = props => {
     },
   ];
 
-  useEffect(() => {
-    // get_musics();
-    // saveUser();
-    signup({
-      first_name: 'amin',
-      last_name: 'tooton',
-      password: '23edsa',
-      phone_number: '09123456789',
-    });
-  }, []);
-
   return (
     <SafeAreaView style={styles.page_container}>
       <StatusBar animated={true} backgroundColor={theme.main.color_1} hidden={false} />
-      <View
-        style={{
-          width: '90%',
-          flexDirection: 'row',
-          marginTop: 30,
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}
-      >
-        {categories.map(c => (
-          <CategoryIcon
-            key={c.id}
-            id={c.id}
-            is_active={selectedFilterId === c.id}
-            icon={c.icon}
-            title={c.title}
-          />
-        ))}
-      </View>
+      <Header />
+      {/*<View*/}
+      {/*  style={{*/}
+      {/*    width: '90%',*/}
+      {/*    flexDirection: 'row',*/}
+      {/*    marginTop: 30,*/}
+      {/*    justifyContent: 'space-between',*/}
+      {/*    alignItems: 'center',*/}
+      {/*  }}*/}
+      {/*>*/}
+      {/*  {categories.map(c => (*/}
+      {/*    <CategoryIcon*/}
+      {/*      key={c.id}*/}
+      {/*      id={c.id}*/}
+      {/*      is_active={selectedFilterId === c.id}*/}
+      {/*      icon={c.icon}*/}
+      {/*      title={c.title}*/}
+      {/*    />*/}
+      {/*  ))}*/}
+      {/*</View>*/}
       <ScrollView
         style={{
-          marginTop: 20,
+          marginTop: 100,
           width: '100%',
           flexDirection: 'column',
 
@@ -177,11 +169,9 @@ export const HomePage: React.FC<Props> = props => {
         }}
       >
         <View style={{alignItems: 'center', paddingBottom: 100}}>
-          <Course />
-          <Course />
-          <Course />
-          <Course />
-          <Course />
+          {courses.map(c => (
+            <Course key={c.title} {...c} />
+          ))}
         </View>
       </ScrollView>
     </SafeAreaView>

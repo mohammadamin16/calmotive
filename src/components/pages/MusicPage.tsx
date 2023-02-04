@@ -118,7 +118,7 @@ export const MusicPage: React.FC<Props> = props => {
     music_item_container: {
       flexDirection: 'row',
       flexWrap: 'wrap',
-      width: '90%',
+      width: '100%',
       // height:"80%",
       // alignItems: "center",
       marginTop: 10,
@@ -349,7 +349,7 @@ export const MusicPage: React.FC<Props> = props => {
           }}
         >
           <>
-            <Image source={cross_icon} style={{width: 15, resizeMode: 'contain', maxHeight: 15}} />
+            <Image source={cross_icon} style={{width: 15, resizeMode: 'contain', height: 15}} />
             <Body
               weight={BodyWeight.Bold}
               size={BodySizes.Medium}

@@ -13,33 +13,66 @@ import active_profile_icon from '../assets/images/icons/active_profile.png';
 import search_icon from '../assets/images/icons/search.png';
 import active_search_icon from '../assets/images/icons/active_search.png';
 import {RootState} from '../../rootReducer';
+import {Body, BodySizes, BodyWeight} from '../UI/texts';
 
 interface MenuItemProps {
   icon: any;
   active_icon: any;
   isActive: boolean;
   screen: Screens;
+  isDisable?: boolean;
 }
 
-export const MenuItem: React.FC<MenuItemProps> = ({icon, active_icon, isActive, screen}) => {
+export const MenuItem: React.FC<MenuItemProps> = ({
+  icon,
+  isDisable,
+  active_icon,
+  isActive,
+  screen,
+}) => {
   const theme = useTheme();
   const dispatch = useDispatch();
   const navigation = useNavigation();
   return (
-    <TouchableOpacity
-      onPress={() => {
-        dispatch(RouteActions.setActiveScreen(screen));
-        navigation.navigate(screen);
-      }}
-      style={{
-        // backgroundColor:"red",
-        padding: 10,
-        width: 50,
-        height: 50,
-      }}
-    >
-      <Image source={isActive ? active_icon : icon} style={{width: 30, height: 30}} />
-    </TouchableOpacity>
+    <>
+      <TouchableOpacity
+        onPress={() => {
+          if (!isDisable) {
+            dispatch(RouteActions.setActiveScreen(screen));
+            navigation.navigate(screen);
+          }
+        }}
+        style={{
+          position: 'relative',
+          // backgroundColor:"red",
+          padding: 10,
+          width: 50,
+          height: 50,
+        }}
+      >
+        <View
+          style={{
+            position: 'absolute',
+            left: -5,
+            top: -2,
+            borderRadius: 50,
+            // width: 20,
+            // height: 20,
+            backgroundColor: theme.main.color_5,
+          }}
+        >
+          {isDisable && (
+            <Body color={theme.alternative.white} size={BodySizes.Small} weight={BodyWeight.Medium}>
+              {'به زودی'}
+            </Body>
+          )}
+        </View>
+        <Image
+          source={isActive ? active_icon : icon}
+          style={{width: 30, height: 30, opacity: isDisable ? 0.5 : 1}}
+        />
+      </TouchableOpacity>
+    </>
   );
 };
 export const MainMenu: React.FC = props => {
@@ -92,12 +125,14 @@ export const MainMenu: React.FC = props => {
         <MenuItem
           screen={Screens.SearchPage}
           icon={search_icon}
+          isDisable={true}
           active_icon={active_search_icon}
           isActive={activePage === Screens.SearchPage}
         />
         <MenuItem
           screen={Screens.ProfilePage}
           icon={user_icon}
+          isDisable={true}
           active_icon={active_profile_icon}
           isActive={activePage === Screens.ProfilePage}
         />

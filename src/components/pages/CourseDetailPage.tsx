@@ -26,45 +26,44 @@ export const CourseDetailPage: React.FC<Props> = ({navigation}) => {
 
     const dispatch = useDispatch()
     return (
-        <SafeAreaView style={styles.page_container}>
-            <StatusBar
-                animated={true}
-                backgroundColor={theme.main.color_3}
-                hidden={false}/>
-            <BackButton
-                backScreen={Screens.HomePage}
-                rotation={BackButtonRotation.left}
-                placement={BackButtonPlacement.left}
-            />
-            <Course full_width={true}/>
-            <ScrollView style={{
-                marginTop: 0,
-                width: '100%',
-                flexDirection: 'column',
-                height: 300,
-            }}
-                        contentContainerStyle={{
-                            alignItems: 'center',
-                            width: '90%',
-                            marginHorizontal: '5%',
-                            justifyContent: 'center',
-                        }}
-            >
-                <Episode/>
-                <Episode/>
-                <Episode/>
-                <Episode/>
-                <Episode/>
-                <Episode/>
-                <Episode/>
-                <Episode/>
-                <Episode/>
-                <Episode/>
-                <Episode/>
-                <Episode/>
-            </ScrollView>
-        </SafeAreaView>
-    )
+      <SafeAreaView style={styles.page_container}>
+        <StatusBar animated={true} backgroundColor={theme.main.color_3} hidden={false} />
+        <BackButton
+          backScreen={Screens.HomePage}
+          rotation={BackButtonRotation.left}
+          placement={BackButtonPlacement.left}
+        />
+        <Course
+          episode_number={5}
+          description={
+            'دوره در هفت روز طراحی شده' +
+            'به طوری که روزانه با هم مدیتیشن میکنیم و نکات و تکنیک هارو یاد میگیرید'
+          }
+          title={'دوره آموزش مدیتیشن'}
+          full_width={true}
+        />
+        <ScrollView
+          style={{
+            marginTop: 0,
+            width: '100%',
+            flexDirection: 'column',
+            height: 300,
+          }}
+          contentContainerStyle={{
+            alignItems: 'center',
+            width: '90%',
+            marginHorizontal: '5%',
+            justifyContent: 'center',
+          }}
+        >
+          <Episode episode_id={1} duration={9} title={'مدیتیشن چیه؟'} />
+          <Episode episode_id={2} duration={9} title={'نمیتونم تمرکز کنم!'} />
+          <Episode episode_id={3} duration={8} title={'واقعا تاثیر داره؟'} />
+          <Episode episode_id={4} duration={9} title={'رفع استرس و اضطراب'} />
+          <Episode episode_id={5} duration={9} title={'پذیرش'} />
+        </ScrollView>
+      </SafeAreaView>
+    );
 }
 
 

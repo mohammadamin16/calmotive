@@ -1,5 +1,5 @@
 import {SplashScreen} from './src/components/pages/SplashScreen';
-import {NavigationContainer, ParamListBase} from '@react-navigation/native';
+import {NavigationContainer, ParamListBase, useNavigation} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {rootStore} from './rootStore';
 import {Provider, useDispatch} from 'react-redux';
@@ -17,6 +17,8 @@ import {SearchPage} from './src/components/pages/SearchPage';
 import {ChoosePlanPage} from './src/components/pages/ChoosePlanPage';
 import {SuccessPaymentPage} from './src/components/pages/SuccessPaymentPage';
 import * as expoSplashScreen from 'expo-splash-screen';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {usePhone} from './src/hooks/auth';
 
 const Stack = createNativeStackNavigator<ParamListBase>();
 
@@ -36,12 +38,13 @@ const RouterContainer = () => {
     }, 2000);
   }, []);
 
-  const isLoggedIn = useMemo(() => '', []);
+  const {phone} = usePhone();
+
+  const isLoggedIn = useMemo(() => Boolean(phone), [phone]);
   const dispatch = useDispatch();
-  dispatch(RouteActions.setActiveScreen(Screens.ChoosePlanPage));
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={Screens.ChoosePlanPage} screenOptions={{headerShown: false}}>
+      <Stack.Navigator initialRouteName={Screens.SplashScreen} screenOptions={{headerShown: false}}>
         <Stack.Screen name={Screens.SplashScreen} component={SplashScreen} />
         <Stack.Screen name={Screens.WelcomeScreen} component={WelcomePage} />
         <Stack.Screen name={Screens.LoginPage} component={LoginPage} />

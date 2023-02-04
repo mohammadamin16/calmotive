@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleProp, Text, TextStyle} from 'react-native';
+import {StyleProp, Text, TextProps, TextStyle} from 'react-native';
 import {useFonts} from 'expo-font';
 
 export enum BodySizes {
@@ -36,7 +36,7 @@ const Fonts = {
   [BodyWeight.Black]: require('../assets/fonts/Estedad-FD-Black.ttf'),
 };
 
-interface BodyProps {
+interface BodyProps extends TextProps {
   weight: BodyWeight;
   size: BodySizes;
   color?: string;
