@@ -39,6 +39,7 @@ import play_icon from '../../assets/images/icons/play.png';
 import pause_icon from '../../assets/images/icons/pause.png';
 import cross_icon from '../../assets/images/icons/cross.png';
 import {Audio} from 'expo-av';
+import ReactGA from 'react-ga4';
 
 type Props = NativeStackScreenProps<RootStackParamList, Screens.LoginPage>;
 
@@ -127,6 +128,13 @@ export const MusicPage: React.FC<Props> = props => {
       paddingBottom: 100,
     },
   });
+  useEffect(() => {
+    ReactGA.event({
+      action: 'music_page visit',
+      label: 'MusicPage',
+      category: 'music',
+    });
+  }, []);
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const tracks = useSelector((state: RootState) => state.mixer.tracks);

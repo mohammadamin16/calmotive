@@ -19,9 +19,11 @@ import {SuccessPaymentPage} from './src/components/pages/SuccessPaymentPage';
 import * as expoSplashScreen from 'expo-splash-screen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {usePhone} from './src/hooks/auth';
-
+import ReactGA from 'react-ga4';
+const TRACKING_ID = 'G-PQ230JH3W2'; // YOUR_OWN_TRACKING_ID
+ReactGA.initialize(TRACKING_ID);
 const Stack = createNativeStackNavigator<ParamListBase>();
-
+ReactGA.event({action: 'start', label: 'start_label', category: 'category_label', value: 1});
 export type RootStackParamList = {
   [Screens.SplashScreen]: undefined;
   [Screens.WelcomeScreen]: undefined;
