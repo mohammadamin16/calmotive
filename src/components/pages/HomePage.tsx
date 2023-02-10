@@ -137,7 +137,7 @@ export const HomePage: React.FC<Props> = props => {
   ];
 
   return (
-    <SafeAreaView style={styles.page_container}>
+    <View style={styles.page_container}>
       <StatusBar animated={true} backgroundColor={theme.main.color_1} hidden={false} />
       <Header />
       {/*<View*/}
@@ -174,6 +174,6 @@ export const HomePage: React.FC<Props> = props => {
           ))}
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 };

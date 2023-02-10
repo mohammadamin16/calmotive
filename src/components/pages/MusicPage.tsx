@@ -271,7 +271,7 @@ export const MusicPage: React.FC<Props> = props => {
   }, [active_tracks]);
 
   return (
-    <SafeAreaView style={styles.page_container}>
+    <View style={styles.page_container}>
       <StatusBar animated={true} backgroundColor={theme.main.color_1} />
       <View style={styles.header}>
         <Body weight={BodyWeight.Bold} size={BodySizes.Medium}>
@@ -369,6 +369,6 @@ export const MusicPage: React.FC<Props> = props => {
           </>
         </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };

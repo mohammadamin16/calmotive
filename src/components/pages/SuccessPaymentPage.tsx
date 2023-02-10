@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {SafeAreaView, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
+import {SafeAreaView, StatusBar, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {useTheme} from '../../UI/theme';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../../App';
@@ -36,7 +36,7 @@ export const SuccessPaymentPage: React.FC<Props> = props => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   return (
-    <SafeAreaView style={styles.page_container}>
+    <View style={styles.page_container}>
       <StatusBar animated={true} backgroundColor={theme.main.color_1} />
 
       <BackButton
@@ -64,6 +64,6 @@ export const SuccessPaymentPage: React.FC<Props> = props => {
           {'بازگشت به صفحه ی اصلی'}
         </Body>
       </TouchableOpacity>
-    </SafeAreaView>
+    </View>
   );
 };

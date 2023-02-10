@@ -38,7 +38,7 @@ export const SearchPage: React.FC<Props> = (props) => {
 
 
     return (
-        <SafeAreaView style={styles.page_container}>
+        <View style={styles.page_container}>
             <StatusBar
                 animated={true}
                 backgroundColor={theme.main.color_5}/>
@@ -60,7 +60,7 @@ export const SearchPage: React.FC<Props> = (props) => {
                     {"جستجو"}
                 </Body>
             </View>
-        </SafeAreaView>
+        </View>
     )
 }
 

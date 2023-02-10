@@ -147,7 +147,7 @@ export const ProfilePage: React.FC<Props> = props => {
   };
 
   return (
-    <SafeAreaView style={styles.page_container}>
+    <View style={styles.page_container}>
       <StatusBar animated={true} backgroundColor={theme.main.color_4} />
       <View style={styles.header}>
         <Body weight={BodyWeight.Bold} size={BodySizes.Medium}>
@@ -244,6 +244,6 @@ export const ProfilePage: React.FC<Props> = props => {
         text={'خروج از حساب کاربری'}
         color={'#EB5757'}
       />
-    </SafeAreaView>
+    </View>
   );
 };

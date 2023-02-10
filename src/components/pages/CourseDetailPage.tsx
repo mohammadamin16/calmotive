@@ -1,5 +1,5 @@
 import React from "react";
-import {SafeAreaView, ScrollView, StatusBar, StyleSheet} from "react-native";
+import {SafeAreaView, ScrollView, StatusBar, StyleSheet, View} from "react-native";
 import {useTheme} from "../../UI/theme";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import {RootStackParamList} from "../../../App";
@@ -26,7 +26,7 @@ export const CourseDetailPage: React.FC<Props> = ({navigation}) => {
 
     const dispatch = useDispatch()
     return (
-      <SafeAreaView style={styles.page_container}>
+      <View style={styles.page_container}>
         <StatusBar animated={true} backgroundColor={theme.main.color_3} hidden={false} />
         <BackButton
           backScreen={Screens.HomePage}
@@ -61,8 +61,10 @@ export const CourseDetailPage: React.FC<Props> = ({navigation}) => {
           <Episode episode_id={3} duration={8} title={'واقعا تاثیر داره؟'} />
           <Episode episode_id={4} duration={9} title={'رفع استرس و اضطراب'} />
           <Episode episode_id={5} duration={9} title={'پذیرش'} />
+          <Episode episode_id={6} duration={8} title={'واکنش های احساسی'} />
+          <Episode episode_id={7} duration={10} title={'جمع بندی نکات و تبدیل عادت'} />
         </ScrollView>
-      </SafeAreaView>
+      </View>
     );
 }
 
