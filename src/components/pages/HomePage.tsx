@@ -78,7 +78,7 @@ const courses: CourseProps[] = [
       'دوره در هفت روز طراحی شده\n' +
       'به طوری که روزانه با هم مدیتیشن میکنیم و نکات و تکنیک هارو یاد میگیرید',
     title: 'دوره شروع مدیتیشن',
-    episode_number: 5,
+    episode_number: 7,
   },
 ];
 export const HomePage: React.FC<Props> = props => {
