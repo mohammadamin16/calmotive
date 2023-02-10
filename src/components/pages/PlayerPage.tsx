@@ -62,6 +62,7 @@ export const PlayerPage: React.FC<Props> = ({navigation}) => {
   const styles = StyleSheet.create({
     page_container: {
       flex: 1,
+      marginTop:50,
       flexDirection: 'column',
       position: 'relative',
       backgroundColor: theme.main.color_1,

@@ -17,6 +17,7 @@ export const CourseDetailPage: React.FC<Props> = ({navigation}) => {
     const styles = StyleSheet.create({
         page_container: {
             flex: 1,
+            marginTop:50,
             flexDirection: "column",
             backgroundColor: theme.main.color_1,
             alignItems: 'center',
